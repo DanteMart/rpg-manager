@@ -1,0 +1,24 @@
+#chars-section {
+  display: flex;
+  flex-direction: row;
+  /* flex-wrap: wrap; */
+  margin: auto;
+  background-color:rgba(0, 0, 0, 0.5);
+  width: 90%;
+  overflow: hidden;
+  overflow-x: auto;
+}
+#char-card {
+  /* flex-basis: auto; */
+  padding: 10px;
+  background-color: grey;
+  margin: 25px 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  min-width: 180px;
+
+}
+.column {
+  width: 50%;
+}

@@ -1,0 +1,11 @@
+<div id="chars-section">
+    <div id="char-card" *ngFor='let char of characters | async'>
+      <div class="column">
+        <p>{{char.name}}</p>
+        <p>STR: {{char.skill_points.strength}} DEX: {{char.skill_points.dexterity}} INT: {{char.skill_points.intelligence}}</p>
+      </div>
+      <div class="column">
+        <img src="../assets/classes/{{char.characterClass}}.png" alt="Class">
+      </div>
+    </div>
+</div>
