@@ -21,4 +21,17 @@
 }
 .column {
   width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+.column img {
+  margin: auto;
+}
+#class-selection {
+  width: 186px;
+  display: block;
+  margin: auto;
+}
+.container {
+  margin-bottom: 25px;
 }

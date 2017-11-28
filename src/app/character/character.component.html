@@ -1,8 +1,61 @@
+<div class="container">
+  <h3>Hero Form</h3>
+  <form #characterForm="ngForm" class="col-xl-8 col-lg-8 col-md-8 col-sm-12">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control"
+      [(ngModel)]='model.name' name="name"
+      id="name" required>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="strength">Strength</label>
+        <input type="number" class="form-control"
+        [(ngModel)]='model.skill_points.strength' name="strength"
+        id="strength" required>
+      </div>
+
+      <div class="form-group col-3">
+        <label for="dexterity">Dexterity</label>
+        <input type="number" class="form-control"
+        [(ngModel)]='model.skill_points.dexterity' name="dexterity"
+        id="strength" required>
+      </div>
+
+      <div class="form-group">
+        <label for="intelligence">Intelligence</label>
+        <input type="number" class="form-control"
+        [(ngModel)]='model.skill_points.intelligence' name="intelligence"
+        id="strength" required>
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <label for="power">Class</label>
+      <select class="form-control" id="class"
+      [(ngModel)]='model.characterClass' name="class"
+      required>
+        <option *ngFor="let class of availableClasses" [value]="class">{{class}}</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-success">Submit</button>
+
+  </form>
+  <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+    <img id="class-selection" src="../assets/classes/{{model.characterClass}}.png" alt="">
+  </div>
+</div>
 <div id="chars-section">
     <div id="char-card" *ngFor='let char of characters | async'>
       <div class="column">
         <p>{{char.name}}</p>
-        <p>STR: {{char.skill_points.strength}} DEX: {{char.skill_points.dexterity}} INT: {{char.skill_points.intelligence}}</p>
+        <p>{{char.characterClass}}</p>
+        <p>STR: {{char.skill_points.strength}}
+          <p>DEX: {{char.skill_points.dexterity}}</p>
+          <p>INT: {{char.skill_points.intelligence}}</p>
       </div>
       <div class="column">
         <img src="../assets/classes/{{char.characterClass}}.png" alt="Class">

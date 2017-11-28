@@ -8,6 +8,8 @@ export class SkillPoints {
   constructor(public strength: number, public dexterity: number, public intelligence: number) { }
 }
 
+export const AvailableClasses = ['barbarian', 'mage', 'rogue', 'knight'];
+
 export class Character {
   constructor(public id: number, public name: string, public skill_points: SkillPoints, public characterClass: string) { }
 }
