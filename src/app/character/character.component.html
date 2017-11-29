@@ -1,18 +1,20 @@
 <div class="container">
   <h3>Hero Form</h3>
-  <form #characterForm="ngForm" class="col-xl-8 col-lg-8 col-md-8 col-sm-12">
+  <form #characterForm="ngForm" (ngSubmit)="onSubmit()" class="col-xl-8 col-lg-8 col-md-8 col-sm-12">
     <div class="form-group">
       <label for="name">Name</label>
       <input type="text" class="form-control"
       [(ngModel)]='model.name' name="name"
+      [ngModelOptions]="{ updateOn: 'blur' }"
       id="name" required>
     </div>
-
     <div class="form-row">
       <div class="form-group">
         <label for="strength">Strength</label>
         <input type="number" class="form-control"
-        [(ngModel)]='model.skill_points.strength' name="strength"
+        [(ngModel)]='model.skill_points.strength' 
+        [ngModelOptions]="{ updateOn: 'blur' }"
+        name="strength"
         id="strength" required>
       </div>
 
@@ -20,6 +22,7 @@
         <label for="dexterity">Dexterity</label>
         <input type="number" class="form-control"
         [(ngModel)]='model.skill_points.dexterity' name="dexterity"
+        [ngModelOptions]="{ updateOn: 'blur' }"
         id="strength" required>
       </div>
 
@@ -27,6 +30,7 @@
         <label for="intelligence">Intelligence</label>
         <input type="number" class="form-control"
         [(ngModel)]='model.skill_points.intelligence' name="intelligence"
+        [ngModelOptions]="{ updateOn: 'blur' }"
         id="strength" required>
       </div>
     </div>
@@ -41,7 +45,12 @@
       </select>
     </div>
 
-    <button type="submit" class="btn btn-success">Submit</button>
+    <div [hidden] = "errorMessage.length == 0"
+    class="alert alert-danger">
+      {{errorMessage}}
+    </div>
+
+    <button type="submit" class="btn btn-success" [disabled]="!characterForm.form.valid">Submit</button>
 
   </form>
   <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">

@@ -16,51 +16,7 @@ export class Character {
 
 const CHARACTERS: Character[] = [
   new Character(11, 'Conan', new SkillPoints(50, 25, 25), 'barbarian'),
-  new Character(11, 'Conan', new SkillPoints(50, 25, 25), 'barbarian'),
-  new Character(11, 'Conan', new SkillPoints(50, 25, 25), 'barbarian'),
-  new Character(11, 'Conan', new SkillPoints(50, 25, 25), 'barbarian'),
-  new Character(11, 'Conan', new SkillPoints(50, 25, 25), 'barbarian'),
-  new Character(11, 'Conan', new SkillPoints(50, 25, 25), 'barbarian'),
-  new Character(11, 'Conan', new SkillPoints(50, 25, 25), 'barbarian'),
-  new Character(11, 'Conan', new SkillPoints(50, 25, 25), 'barbarian'),
-  new Character(11, 'Conan', new SkillPoints(50, 25, 25), 'barbarian'),
-  new Character(11, 'Conan', new SkillPoints(50, 25, 25), 'barbarian'),
-  new Character(11, 'Conan', new SkillPoints(50, 25, 25), 'barbarian'),
-  new Character(11, 'Conan', new SkillPoints(50, 25, 25), 'barbarian'),
-  new Character(11, 'Conan', new SkillPoints(50, 25, 25), 'barbarian'),
-  new Character(11, 'Conan', new SkillPoints(50, 25, 25), 'barbarian'),
-  new Character(11, 'Conan', new SkillPoints(50, 25, 25), 'barbarian'),
-  new Character(11, 'Conan', new SkillPoints(50, 25, 25), 'barbarian'),
-  new Character(11, 'Conan', new SkillPoints(50, 25, 25), 'barbarian'),
-  new Character(11, 'Conan', new SkillPoints(50, 25, 25), 'barbarian'),
-  new Character(11, 'Conan', new SkillPoints(50, 25, 25), 'barbarian'),
-  new Character(11, 'Conan', new SkillPoints(50, 25, 25), 'barbarian'),
-  new Character(11, 'Conan', new SkillPoints(50, 25, 25), 'barbarian'),
-  new Character(11, 'Conan', new SkillPoints(50, 25, 25), 'barbarian'),
-  new Character(11, 'Conan', new SkillPoints(50, 25, 25), 'barbarian'),
-  new Character(11, 'Conan', new SkillPoints(50, 25, 25), 'barbarian'),
-  new Character(11, 'Conan', new SkillPoints(50, 25, 25), 'barbarian'),
-  new Character(11, 'Conan', new SkillPoints(50, 25, 25), 'barbarian'),
-  new Character(11, 'Conan', new SkillPoints(50, 25, 25), 'barbarian'),
-  new Character(11, 'Conan', new SkillPoints(50, 25, 25), 'barbarian'),
-  new Character(11, 'Conan', new SkillPoints(50, 25, 25), 'barbarian'),
-  new Character(11, 'Conan', new SkillPoints(50, 25, 25), 'barbarian'),
-  new Character(11, 'Conan', new SkillPoints(50, 25, 25), 'barbarian'),
-  new Character(11, 'Conan', new SkillPoints(50, 25, 25), 'barbarian'),
-  new Character(11, 'Conan', new SkillPoints(50, 25, 25), 'barbarian'),
-  new Character(11, 'Conan', new SkillPoints(50, 25, 25), 'barbarian'),
-  new Character(11, 'Conan', new SkillPoints(50, 25, 25), 'barbarian'),
-  new Character(11, 'Conan', new SkillPoints(50, 25, 25), 'barbarian'),
-  new Character(11, 'Conan', new SkillPoints(50, 25, 25), 'barbarian'),
-  new Character(11, 'Conan', new SkillPoints(50, 25, 25), 'barbarian'),
-  new Character(11, 'Conan', new SkillPoints(50, 25, 25), 'barbarian'),
-  new Character(11, 'Conan', new SkillPoints(50, 25, 25), 'barbarian'),
-  new Character(11, 'Conan', new SkillPoints(50, 25, 25), 'barbarian'),
-  new Character(11, 'Conan', new SkillPoints(50, 25, 25), 'barbarian'),
-  new Character(11, 'Conan', new SkillPoints(50, 25, 25), 'barbarian'),
-  new Character(11, 'Conan', new SkillPoints(50, 25, 25), 'barbarian'),
-  new Character(11, 'Conan', new SkillPoints(50, 25, 25), 'barbarian'),
-  new Character(11, 'Conan', new SkillPoints(50, 25, 25), 'barbarian'),
+  new Character(11, 'Conan', new SkillPoints(50, 25, 25), 'barbarian')
 
 ];
 
@@ -79,5 +35,11 @@ export class CharacterService implements OnDestroy {
   getCharacter(id: number | string): Observable<Character> {
     return of(CHARACTERS.find(char => char.id === +id))
       .pipe(delay(FETCH_LATENCY));
+  }
+
+  saveCharacter(model: Character) {
+    model.id = CHARACTERS.length + 1;
+    CHARACTERS.push(new Character(model.id, model.name, new SkillPoints(model.skill_points.strength, model.skill_points.dexterity, model.skill_points.intelligence), model.characterClass));
+    model = new Character(1, 'John Doe', new SkillPoints(50, 25, 25), 'barbarian')
   }
 }
